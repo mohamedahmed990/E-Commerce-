@@ -78,7 +78,7 @@ export default function Payment() {
         token: token
       },
       params: {
-        url: "http://localhost:3000"
+        url: "https://mohamedahmed990.github.io/E-Commerce_Project/#"
       }
     }).then((response) => {
       console.log(response)
