@@ -1,0 +1,12 @@
+.bg-navbar{
+    background-color: rgb(237, 233, 233);
+}
+
+.logout{
+    cursor: pointer;
+}
+
+.active{
+    background-color: #212529 !important;
+    color: white !important;
+}
