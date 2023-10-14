@@ -103,7 +103,7 @@ export default function Products() {
         <Row className="g-2">
           {data.data.data.map((product, index) => {
             return (
-              <Col key={index} sm={4} md={2} >
+              <Col key={index} sm={4} md={3} lg={2} >
                 <animated.div style={props} >
                   <Card
                     style={{ width: "100%", height: "100%" }}
