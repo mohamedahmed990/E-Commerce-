@@ -95,20 +95,20 @@ export default function Products() {
           {data.data.data.map((product, index) => {
             return (
               <Col  key={index} sm={6} md={4} lg={3}  >
-                <Card className={Style['product-card']}
+                <Card className={`${Style['product-card']} pb-4`}  
                   style={{ height: "100%" }}
                 >
                   <Card.Img variant="top" src={product.imageCover} style={{ cursor: "pointer" }} onClick={function () {
                     sendProduct(product.id)
                   }} />
-                  <Card.Body>
+                  <Card.Body className="position-relative overflow-hidden">
                     <Card.Text className="mb-1 main-color">
                       {product.category.name}
                     </Card.Text>
                     <Card.Title className="mb-2">
                       {product.title.split(" ", 2).join(" ")}
                     </Card.Title>
-                    <Stack direction="horizontal" className="justify-content-between mb-3">
+                    <Stack direction="horizontal" className="justify-content-between mb-4">
                       <Card.Text className="mb-2">{product.price} EG</Card.Text>
                       <div className="d-flex gap-3 align-items-center">
                         <Card.Text className="mb-2 d-flex gap-1 align-items-center"><i className="star-color fa-solid fa-star"></i>{product.ratingsAverage}</Card.Text>
@@ -119,13 +119,12 @@ export default function Products() {
                         </div>
                       </div>
                     </Stack>
-                    <Button style={{ border: "none" }} className="w-100 bg-green " onClick={function () {
+                    <Button style={{ border: "none" }} className={`${Style['add-to-cart-btn']} w-75 bg-green`} onClick={function () {
                       addProductToCart(product.id)
                     }}> + Add to cart</Button>
                   </Card.Body>
                 </Card>
               </Col>
-
             );
           })}
         </Row>
