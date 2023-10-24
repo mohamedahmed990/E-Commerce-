@@ -17,9 +17,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { cartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
-import { useSpring, animated } from "react-spring";
-import HomeSlider from "../HomeSlider/HomeSlider";
-import CategorySlider from "../CategorySlider/CategorySlider";
 import { authContext } from "../../Context/Authentication";
 import { wishlistContext } from "../../Context/WishListContext";
 
@@ -56,10 +53,6 @@ export default function Products() {
       removeProductFromWishlist(ProductId)
     }
   }
-  const props = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-  });
 
   function getAllProducts() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/products");
@@ -97,45 +90,40 @@ export default function Products() {
 
   return (
     <>
-      <Container className="py-5">
-        <HomeSlider />
-        <CategorySlider />
-        <Row className="g-2">
+      <Container className="py-3">
+        <Row className="g-4">
           {data.data.data.map((product, index) => {
             return (
-              <Col key={index} sm={4} md={3} lg={2} >
-                <animated.div style={props} >
-                  <Card
-                    style={{ width: "100%", height: "100%" }}
-
-                  >
-                    <Card.Img variant="top" src={product.imageCover} style={{ cursor: "pointer" }} onClick={function () {
-                      sendProduct(product.id)
-                    }} />
-                    <Card.Body>
-                      <Card.Text className="mb-1 main-color">
-                        {product.category.name}
-                      </Card.Text>
-                      <Card.Title className="mb-2">
-                        {product.title.split(" ", 2).join(" ")}
-                      </Card.Title>
-                      <Stack direction="horizontal" className="justify-content-between mb-3">
-                        <Card.Text className="mb-2">{product.price} EG</Card.Text>
-                        <div className="d-flex gap-3 align-items-center">
-                          <Card.Text className="mb-2 d-flex gap-1 align-items-center"><i className="star-color fa-solid fa-star"></i>{product.ratingsAverage}</Card.Text>
-                          <div onClick={function () {
-                            handleClick(product.id, wishlistProductsId.includes(product.id))
-                          }} style={{ cursor: "pointer", color: "red" }}>
-                            <FontAwesomeIcon icon={wishlistProductsId.includes(product.id) ? solidHeart : regularHeart} size="2x" />
-                          </div>
+              <Col  key={index} sm={6} md={4} lg={3}  >
+                <Card className={Style['product-card']}
+                  style={{ height: "100%" }}
+                >
+                  <Card.Img variant="top" src={product.imageCover} style={{ cursor: "pointer" }} onClick={function () {
+                    sendProduct(product.id)
+                  }} />
+                  <Card.Body>
+                    <Card.Text className="mb-1 main-color">
+                      {product.category.name}
+                    </Card.Text>
+                    <Card.Title className="mb-2">
+                      {product.title.split(" ", 2).join(" ")}
+                    </Card.Title>
+                    <Stack direction="horizontal" className="justify-content-between mb-3">
+                      <Card.Text className="mb-2">{product.price} EG</Card.Text>
+                      <div className="d-flex gap-3 align-items-center">
+                        <Card.Text className="mb-2 d-flex gap-1 align-items-center"><i className="star-color fa-solid fa-star"></i>{product.ratingsAverage}</Card.Text>
+                        <div onClick={function () {
+                          handleClick(product.id, wishlistProductsId.includes(product.id))
+                        }} style={{ cursor: "pointer", color: "red" }}>
+                          <FontAwesomeIcon icon={wishlistProductsId.includes(product.id) ? solidHeart : regularHeart} size="2x" />
                         </div>
-                      </Stack>
-                      <Button style={{ border: "none" }} className="w-100 bg-green " onClick={function () {
-                        addProductToCart(product.id)
-                      }}> + Add to cart</Button>
-                    </Card.Body>
-                  </Card>
-                </animated.div>
+                      </div>
+                    </Stack>
+                    <Button style={{ border: "none" }} className="w-100 bg-green " onClick={function () {
+                      addProductToCart(product.id)
+                    }}> + Add to cart</Button>
+                  </Card.Body>
+                </Card>
               </Col>
 
             );

@@ -19,6 +19,10 @@ import { Offline } from "react-detect-offline";
 import Brands from "./Components/Brands/Brands";
 import WishlistProvider from "./Context/WishListContext";
 import Wishlist from "./Components/Wishlist/Wishlist";
+import GetEmailadress from "./Components/GetEmailadress/GetEmailadress";
+import GetVerificationCode from './Components/GetVerificationCode/GetVerificationCode';
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
+import Home from "./Components/Home/Home";
 
 let router = createHashRouter([
   {
@@ -26,12 +30,12 @@ let router = createHashRouter([
 
       {
         index: true, element: <ProtectedRoute>
-          <Products />
+          <Home />
         </ProtectedRoute>
       },
       {
-        path: "products", element: <ProtectedRoute>
-          <Products />
+        path: "home", element: <ProtectedRoute>
+          <Home />
         </ProtectedRoute>
       },
       {
@@ -41,6 +45,9 @@ let router = createHashRouter([
       },
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
+      { path: "forgotpassword", element: <GetEmailadress /> },
+      { path: "getverificationcode", element: <GetVerificationCode /> },
+      { path: "resetPassword", element: <ResetPassword /> },
       {
         path: "cart", element: <ProtectedRoute>
 

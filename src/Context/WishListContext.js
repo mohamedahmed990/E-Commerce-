@@ -8,9 +8,6 @@ export default function WishlistProvider({ children }) {
     const [wishlistProductsId, setWishlistProductsId] = useState([]);
     const [wishlistDetails, setWishlistDetails] = useState(null);
     const { token } = useContext(authContext);
-    // useEffect(() => {
-    //     getUserWishlist();
-    // }, [token]);
 
     async function getUserWishlist() {
         try {

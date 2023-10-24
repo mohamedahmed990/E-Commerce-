@@ -2,7 +2,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useContext, useState } from "react";
 import { Alert, Button, Form, Stack } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import { authContext } from '../../Context/Authentication';
 export default function Login() {
@@ -62,7 +62,7 @@ export default function Login() {
 
   return (
     <>
-      <Form className="w-75 py-5 m-auto min-vh-100" onSubmit={formik.handleSubmit}>
+      <Form className="w-75 py-5 m-auto min-vh-100 mt-5" onSubmit={formik.handleSubmit}>
         <h2>Login </h2>
         {errorMsg ? <Alert variant="danger">{errorMsg}</Alert> : ""}
         {successMsg ? <Alert variant="success">{successMsg}</Alert> : ""}
@@ -93,10 +93,13 @@ export default function Login() {
           </Form.Group>
           {formik.errors.password && formik.touched.password ? <Alert variant="danger">{formik.errors.password}</Alert> : ""}
 
+          <Stack direction="horizontal" className="align-items-center justify-content-between">
+            <Link to="/forgotpassword" className="text-decoration-none">Forgot your Password ?</Link>
+            <Button variant="success" type="submit" style={{ width: "fit-content" }}>
+              {isLoading ? <ScaleLoader color="white" height={20} /> : "Login"}
+            </Button>
+          </Stack>
 
-          <Button variant="success" type="submit" style={{ width: "fit-content" }}>
-            {isLoading ? <ScaleLoader color="white" height={20} /> : "Login"}
-          </Button>
         </Stack>
       </Form>
     </>

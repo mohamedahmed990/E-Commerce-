@@ -19,7 +19,7 @@ export default function Brands() {
   }
   console.log(data)
   return <>
-    <Container className='py-5 min-vh-100'>
+    <Container className='py-5 min-vh-100 mt-5'>
       <Row className='g-4'>
         {data.data.data.map((brand, index) => {
           return <Col key={index} sm={4} md={3} lg={2} >

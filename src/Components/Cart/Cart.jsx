@@ -22,7 +22,7 @@ export default function Cart() {
 
   useEffect(() => {
     getCartProducts();
-    
+
   }, [])
   async function deleteItem(id) {
     const data = await removeItem(id)
@@ -45,10 +45,10 @@ export default function Cart() {
     const data = await clearUserCart();
 
   }
-  function navigateToPayment(){
-      navigate("/payment");
+  function navigateToPayment() {
+    navigate("/payment");
   }
-  
+
   if (!products) {
     return <div className='d-flex justify-content-center align-items-center min-vh-100'>
       <PacmanLoader color="#36d7b7" />
@@ -63,46 +63,48 @@ export default function Cart() {
     </div>
   }
   return <>
-    <Container className="p-4 bg-grey my-3 min-vh-100">
-      <h2 >Shop Cart :</h2>
-      <p className='fs-5 main-color' >Total Cart Price : {totalCartPrice} EG </p>
-      <Stack direction="horizontal" className='justify-content-between'>
-        <Button variant="danger" onClick={clearCart}>Clear Cart</Button>
-        <Button variant="primary" onClick={navigateToPayment}>Confirm Payment</Button>
-      </Stack>
-      <Stack >
-        {products.map((item, index) => {
-          return <div key={index} className='cart-item row py-3' style={{ "borderBottom": "1px solid #DEE2E6" }}>
-            <div className='col-1'>
-              <div>
-                <img className='w-100' src={item.product.imageCover} alt="" />
-              </div>
-            </div>
-            <div className='col-11'>
-              <div className='d-flex justify-content-between'>
+    <Container className="mt-5 min-vh-100 overflow-hidden">
+      <div className='px-4  bg-grey mt-5  py-5'>
+        <h2 >Shop Cart :</h2>
+        <p className='fs-5 main-color' >Total Cart Price : {totalCartPrice} EG </p>
+        <Stack direction="horizontal" className='justify-content-between'>
+          <Button variant="danger" onClick={clearCart}>Clear Cart</Button>
+          <Button variant="primary" onClick={navigateToPayment}>Confirm Payment</Button>
+        </Stack>
+        <Stack >
+          {products.map((item, index) => {
+            return <div key={index} className='cart-item row py-3' style={{ "borderBottom": "1px solid #DEE2E6" }}>
+              <div className='col-1'>
                 <div>
-                  <p>{item.product.title}</p>
-                  <p>{item.price}</p>
-                  <Button variant='outline-danger' onClick={function () {
-                    deleteItem(item.product.id)
-                  }}><i className="fa-solid fa-trash-can"></i> Remove</Button>
+                  <img className='w-100' src={item.product.imageCover} alt="" />
                 </div>
-                <Stack direction="horizontal" gap={2} className='align-items-center'>
-                  <Button variant='outline-success' className='py-1 px-2' onClick={() => {
-                    updateCartProduct(item.product.id, item.count + 1)
-                  }}>+</Button>
-                  <p className='mb-0'>{item.count}</p>
-                  <Button variant='outline-success' className='py-1 px-2' onClick={() => {
-                    updateCartProduct(item.product.id, item.count - 1 < 0 ? 0 : item.count - 1)
-                  }}> - </Button>
-                </Stack>
               </div>
-            </div>
-          </div >
-        })}
+              <div className='col-11'>
+                <div className='d-flex justify-content-between'>
+                  <div>
+                    <p>{item.product.title}</p>
+                    <p>{item.price}</p>
+                    <Button variant='outline-danger' onClick={function () {
+                      deleteItem(item.product.id)
+                    }}><i className="fa-solid fa-trash-can"></i> Remove</Button>
+                  </div>
+                  <Stack direction="horizontal" gap={2} className='align-items-center'>
+                    <Button variant='outline-success' className='py-1 px-2' onClick={() => {
+                      updateCartProduct(item.product.id, item.count + 1)
+                    }}>+</Button>
+                    <p className='mb-0'>{item.count}</p>
+                    <Button variant='outline-success' className='py-1 px-2' onClick={() => {
+                      updateCartProduct(item.product.id, item.count - 1 < 0 ? 0 : item.count - 1)
+                    }}> - </Button>
+                  </Stack>
+                </div>
+              </div>
+            </div >
+          })}
 
 
-      </Stack>
+        </Stack>
+      </div>
     </Container>
 
   </>

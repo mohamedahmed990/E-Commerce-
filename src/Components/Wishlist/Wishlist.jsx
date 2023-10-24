@@ -56,7 +56,7 @@ export default function Wishlist() {
   }
   console.log(wishlistDetails)
   return <>
-    <div className='container py-5 min-vh-100'>
+    <div className='container py-5 min-vh-100 mt-5'>
       <h2>Wishlist</h2>
       <div className='row g-0'>
         {wishlistDetails.map((product, index) => {
