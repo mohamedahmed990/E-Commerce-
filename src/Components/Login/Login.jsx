@@ -28,7 +28,7 @@ export default function Login() {
         setToken(data.token);
         localStorage.setItem("token", data.token);
         setTimeout(() => {
-          navigate("/products");
+          navigate("/home");
         }, 1000);
       }
     }).catch((error) => {

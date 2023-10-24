@@ -30,7 +30,7 @@ export default function ResetPassword() {
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
         setTimeout(() => {
-          navigate("/products");
+          navigate("/home");
         }, 1000);
       }
     }).catch((error) => {
