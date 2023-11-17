@@ -32,7 +32,6 @@ export default function Register() {
         }, 1000);
       }
     }).catch((error) => {
-      // console.log(error.response.data.message);
       setErrorMsg(error.response.data.message);
     }).finally(() => {
       setIsLoading(false);
@@ -81,8 +80,7 @@ export default function Register() {
 
   return (
     <>
-      {/* {console.log(formik)} */}
-      <Form className="w-75 py-5 m-auto min-vh-100" onSubmit={formik.handleSubmit}>
+      <Form className="w-75 py-5 m-auto min-vh-100 mt-5 " onSubmit={formik.handleSubmit}>
         <h2>Register Now </h2>
         {errorMsg ? <Alert variant="danger">{errorMsg}</Alert> : ""}
         {successMsg ? <Alert variant="success">{successMsg}</Alert> : ""}

@@ -49,19 +49,19 @@ export default function Wishlist() {
 
   }
   if (wishlistDetails.length===0) {
-    return <div className='d-flex justify-content-center py-5 min-vh-100'>
+    return <div className='d-flex justify-content-center py-5 min-vh-100 mt-5'>
       <h2>Your Wishlist is empty</h2>
     </div>
 
   }
   console.log(wishlistDetails)
   return <>
-    <div className='container py-5 min-vh-100 mt-5'>
-      <h2>Wishlist</h2>
-      <div className='row g-0'>
+    <div className='container py-5 min-vh-100 mt-5 '>
+      <h2 className='text-center'>Wishlist</h2>
+      <div className='row g-0 '>
         {wishlistDetails.map((product, index) => {
-          return <div key={index} className='col-md-4  p-2'>
-            <div className='content p-4 rounded-3' style={{ backgroundColor: "#DC3545" }}>
+          return <div key={index} className='col-xxl-4 col-md-6 p-2'>
+            <div className='content p-4 rounded-3 h-100 d-flex flex-column justify-content-between' style={{ backgroundColor: "#DC3545" }}>
               <div className='d-flex gap-2 mb-3'>
                 <div className='w-25'>
                   <div className='img-container'>
@@ -75,19 +75,15 @@ export default function Wishlist() {
                   <p className='m-0'>Brand: {product.brand.name}</p>
                 </div>
               </div>
-              <div className='d-flex gap-3'>
-                <Button variant='outline-light' className="w-100 " onClick={function () {
+              <div className={`d-flex gap-3 ${Style['btns-container']}`}>
+                <Button variant='outline-light' className='flex-grow-1' onClick={function () {
                   addProductToCart(product.id)
                 }}> + Add to cart</Button>
-                <Button variant="outline-dark" className="w-100  " onClick={function () {
+                <Button variant="outline-dark" className='flex-grow-1' onClick={function () {
                   removeFromWishlist(product.id)
                 }}> Remove from wishlist</Button>
               </div>
             </div>
-
-
-            {/* <div className='col-sm-4'></div>
-        <div className='col-sm-2'>heart  </div> */}
           </div>
         })}
       </div>

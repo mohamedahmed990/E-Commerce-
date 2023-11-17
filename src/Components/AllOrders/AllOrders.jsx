@@ -37,8 +37,8 @@ export default function AllOrders() {
     <Container className="py-5 min-vh-100 my-5" >
       <h2>All Orders</h2>
       {allOrders.map((order, index) => {
-        return <div key={index} className='p-2 mb-3' style={{ "borderTop": "1px solid #5F6368" }} >
-          <div md={6}>
+        return <div className='items-container p-2 mb-3 ' key={index} style={{ "borderTop": "1px solid #5F6368" }}>
+          <div>
             <div>
               <p className='fs-5'><span className='fs-4 fw-bolder'>Total Order Price:</span> {order.totalOrderPrice}</p>
               <p className='fs-5'><span className='fs-4 fw-bolder'>Created at:</span> {order.createdAt}</p>
@@ -46,22 +46,18 @@ export default function AllOrders() {
               <p className='fs-5'><span className='fs-4 fw-bolder'>Payment method type:</span> {order.paymentMethodType}</p>
             </div>
           </div>
-          <Row className='items-container'>
+          <Row className='item g-2 justify-content-start' >
             {order.cartItems.map((item, idx) =>
-              <Col key={idx} md={6}>
-                <Row className='item g-2' >
-                  <Col md={2} className='my-2' >
-                    <div className='img-container'>
-                      <Image src={item.product.imageCover} fluid />
-                    </div>
-                  </Col>
-                  <Col md={10} className='my-2 text-white' style={{ "backgroundColor": "#5F6368" }}>
-                    <p className='m-1'>Name: {item.product.title.split(" ", 10).join(" ")}</p>
-                    <p className='m-1'>Price: {item.price}</p>
-                    <p className='m-1'>Pieces: {item.count}</p>
-                    <p className='m-1'>Brand: {item.product.brand.name}</p>
-                  </Col>
-                </Row>
+              <Col key={idx} md={4} lg={3} xl={2} className={`my-2 text-white d-flex flex-column ${Style['item']}`} >
+                <div className={`${ Style['img-container']}`}>
+                  <Image src={item.product.imageCover} fluid />
+                </div>
+                <div style={{ "backgroundColor": "#5F6368" }} className={`flex-grow-1 ${Style['item-details']}`}>
+                  <p className='m-1'>Name: {item.product.title.split(" ", 10).join(" ")}</p>
+                  <p className='m-1'>Price: {item.price}</p>
+                  <p className='m-1'>Pieces: {item.count}</p>
+                  <p className='m-1'>Brand: {item.product.brand.name}</p>
+                </div>
               </Col>
             )}
           </Row>

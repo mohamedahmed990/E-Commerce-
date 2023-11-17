@@ -55,15 +55,15 @@ export default function Cart() {
     </div>
   }
   if (products?.length === 0) {
-    return <div className='min-vh-100'>
-      <Container className="p-4 bg-grey my-3 ">
+    return <div className='min-vh-100 mt-5 overflow-hidden '>
+      <Container className="p-4 bg-grey my-3 mt-5">
         <h2 >There is no products in your cart</h2>
         <p className='fs-5' >Try adding some products</p>
       </Container>
     </div>
   }
   return <>
-    <Container className="mt-5 min-vh-100 overflow-hidden">
+    <Container className="my-5 min-vh-100 overflow-hidden " >
       <div className='px-4  bg-grey mt-5  py-5'>
         <h2 >Shop Cart :</h2>
         <p className='fs-5 main-color' >Total Cart Price : {totalCartPrice} EG </p>
@@ -74,12 +74,12 @@ export default function Cart() {
         <Stack >
           {products.map((item, index) => {
             return <div key={index} className='cart-item row py-3' style={{ "borderBottom": "1px solid #DEE2E6" }}>
-              <div className='col-1'>
+              <div className='col-sm-3 col-md-2'>
                 <div>
                   <img className='w-100' src={item.product.imageCover} alt="" />
                 </div>
               </div>
-              <div className='col-11'>
+              <div className='col-sm-9 col-md-10'>
                 <div className='d-flex justify-content-between'>
                   <div>
                     <p>{item.product.title}</p>

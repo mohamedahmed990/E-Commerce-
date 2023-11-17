@@ -13,7 +13,6 @@ export default function CartProvider({ children }) {
 
     useEffect(() => {
         getCartProducts();
-        // console.log("rendering");
     }, [token])
     async function addToCart(id) {
         try {
@@ -24,33 +23,29 @@ export default function CartProvider({ children }) {
                     token: token
                 }
             });
-            // console.log(data);
             setTotalCartPrice(data.data.totalCartPrice)
             setNumOfCartItems(data.numOfCartItems)
             setCartProductslist(null);
             return data;
         } catch (error) {
-            console.log(error)
+
         }
     }
     async function getCartProducts() {
-        // console.log(token)
         try {
             const { data } = await axios.get("https://ecommerce.routemisr.com/api/v1/cart", {
                 headers: {
                     token: token,
                 }
             });
-            console.log(data);
             setCartId(data.data._id);
             setCartProductslist(data.data.products);
             setNumOfCartItems(data.numOfCartItems);
             setTotalCartPrice(data.data.totalCartPrice);
             return data;
         } catch (response) {
-            console.log(response);
             if (response?.response?.data?.message.includes("No cart exist for this user")){
-                console.log("No cart exist for this user");
+                // console.log("No cart exist for this user");
                 setCartProductslist([]);
             }   
         }
@@ -65,13 +60,11 @@ export default function CartProvider({ children }) {
                     token: token
                 }
             })
-            // console.log(data);
             setCartProductslist(data.data.products);
             setNumOfCartItems(data.numOfCartItems);
             setTotalCartPrice(data.data.totalCartPrice);
             return data;
         } catch (error) {
-            console.log(error);
         }
     }
 
@@ -89,7 +82,6 @@ export default function CartProvider({ children }) {
             setTotalCartPrice(data.data.totalCartPrice);
             return data;
         } catch (error) {
-            console.log(error);
         }
     }
     async function clearUserCart() {
@@ -99,11 +91,9 @@ export default function CartProvider({ children }) {
                     token: token
                 }
             });
-            console.log(data);
             resetData();
             return data;
         } catch (error) {
-            console.log(error);
         }
     }
     function resetData(){

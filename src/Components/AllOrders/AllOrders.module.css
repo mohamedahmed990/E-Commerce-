@@ -1,1 +1,11 @@
-.AllOrders {}
+@media screen and (max-width: 768px) {
+    .item{
+        flex-direction: row!important;
+    }
+    .img-container{
+        width: 25%;
+    }
+    .item-details{
+        width: 75%;
+    }
+}

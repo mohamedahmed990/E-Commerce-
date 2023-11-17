@@ -1,1 +1,6 @@
-.Wishlist {}
+@media screen and (max-width: 991px) {
+    .btns-container{
+        flex-direction: column!important;
+    }
+    
+}
