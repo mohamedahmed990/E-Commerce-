@@ -1,11 +1,29 @@
+.item-card {
+    flex-direction: column ;
+    /* width: 33.33% !important; */
+}
 @media screen and (max-width: 768px) {
-    .item{
-        flex-direction: row!important;
+    .item-card {
+        flex-direction: row;
+        width: 100% !important
+        /* width: 33.33% !important; */
     }
-    .img-container{
-        width: 25%;
+
+    .img-container {
+        width: 20% !important;
+        flex-grow: 0;
     }
-    .item-details{
-        width: 75%;
+
+    .item-details {
+        width: 80% !important;
+        flex-grow: 0;
+    }
+
+    .order-info {
+        flex-direction: column;
+    }
+
+    .order-info>div {
+        width: 100% !important;
     }
 }

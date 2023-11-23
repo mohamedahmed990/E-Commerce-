@@ -22,10 +22,8 @@ export default function AllOrders() {
         token: token
       }
     }).then((response) => {
-      // console.log(response);
       setAllOrders(response.data);
     }).catch((err) => {
-      // console.log(err);
     })
   }
   if (!allOrders) {
@@ -38,19 +36,21 @@ export default function AllOrders() {
       <h2>All Orders</h2>
       {allOrders.map((order, index) => {
         return <div className='items-container p-2 mb-3 ' key={index} style={{ "borderTop": "1px solid #5F6368" }}>
-          <div>
-            <div>
+          <div className={`d-flex  ${Style['order-info']}`}>
+            <div className="w-50">
               <p className='fs-5'><span className='fs-4 fw-bolder'>Total Order Price:</span> {order.totalOrderPrice}</p>
               <p className='fs-5'><span className='fs-4 fw-bolder'>Created at:</span> {order.createdAt}</p>
-              <p className='fs-5'><span className='fs-4 fw-bolder'>Number of order items:</span> {order.cartItems.length} items</p>
+            </div>
+            <div className="w-50">
               <p className='fs-5'><span className='fs-4 fw-bolder'>Payment method type:</span> {order.paymentMethodType}</p>
+              <p className='fs-5'><span className='fs-4 fw-bolder'>Number of order items:</span> {order.cartItems.length} items</p>
             </div>
           </div>
-          <Row className='item g-2 justify-content-start' >
+          <Row className='g-2 justify-content-start' >
             {order.cartItems.map((item, idx) =>
-              <Col key={idx} md={4} lg={3} xl={2} className={`my-2 text-white d-flex flex-column ${Style['item']}`} >
-                <div className={`${ Style['img-container']}`}>
-                  <Image src={item.product.imageCover} fluid />
+              <Col key={idx} md={4} lg={3} xl={2} className={`my-2 text-white d-flex  ${Style['item-card']} ${Style['col-md-4']}`} >
+                <div className={`${Style['img-container']}`}>
+                  <Image src={item.product.imageCover} className='w-100' />
                 </div>
                 <div style={{ "backgroundColor": "#5F6368" }} className={`flex-grow-1 ${Style['item-details']}`}>
                   <p className='m-1'>Name: {item.product.title.split(" ", 10).join(" ")}</p>
