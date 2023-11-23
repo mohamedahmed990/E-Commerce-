@@ -45,7 +45,7 @@ export default function ProductDetails() {
   const { data: product } = response.data.data;
   return <>
     <Container className="min-vh-100 mt-5">
-      <div className='row  g-4 py-5'>
+      <div className='row align-items-center g-4 py-5'>
         <div className='col-md-4'>
           <div className='img-container'>
             <img className='w-100' src={product.imageCover} alt={product.title} />
